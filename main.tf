@@ -85,7 +85,7 @@ resource "ibm_container_vpc_cluster" "app_cluster" {
     wait_till         = "MasterNodeReady"
     disable_public_service_endpoint = false
     resource_group_id = data.ibm_resource_group.env_resource_group.id
-    tags              = ["env:${var.environment}","schematics:${var.schematics_workspace_name}"]
+    tags              = ["env:${var.environment}","vpc:${var.vpc_name}","schematics:${var.schematics_workspace_name}"]
     zones {
         subnet_id = module.app_subnets.subnet1_id
         name      = "${var.region}-1"
