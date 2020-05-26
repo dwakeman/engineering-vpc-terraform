@@ -82,6 +82,8 @@ resource "ibm_container_vpc_cluster" "app_cluster" {
     flavor            = "bx2.4x16"
     kube_version      = "1.17"
     worker_count      = "1"
+    wait_till         = "MasterNodeReady"
+    disable_public_service_endpoint = false
     resource_group_id = data.ibm_resource_group.env_resource_group.id
     tags              = ["env:${var.environment}","schematics:${var.schematics_workspace_name}"]
     zones {
